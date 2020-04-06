@@ -1,8 +1,11 @@
 package com.hendisantika.sendemailthymeleaftemplatespringboot.service;
 
+import com.hendisantika.sendemailthymeleaftemplatespringboot.model.Mail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -25,4 +28,9 @@ public class MailService {
 
     @Autowired
     private JavaMailSender javaMailSender;
+
+    public ResponseEntity<?> sendMail(Mail mail) {
+        send(mail);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
