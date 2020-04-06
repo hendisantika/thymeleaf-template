@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,5 +33,12 @@ public class MailService {
     public ResponseEntity<?> sendMail(Mail mail) {
         send(mail);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    public void send(Mail mail) {
+        final Context context = new Context();
+        context.setVariable("message", mail.getMessage());
+        String body = templateEngine.process("email/email-template", context);
+        sendPreparedMail(mail.getEmail(), mail.getObject(), body, true);
     }
 }
