@@ -4,7 +4,7 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>ASFIM Email</title>
+    <title>Thymeleaf Template Email</title>
 </head>
 <body>
 <table>
@@ -13,9 +13,9 @@
         <td>Message:</td>
         <td><p th:text="|${message}|">Hello</p></td>
     </tr>
-    tr>
-    <td>Date Time:</td>
-    <td><p th:text="|${waktu}|">waktu</p></td>
+    <tr>
+        <td>Date Time:</td>
+        <td><p th:text="${#temporals.format(now, 'dd-MMM-yyyy HH:ss')}">createdOn</p></td>
     </tr>
     </tbody>
 </table>

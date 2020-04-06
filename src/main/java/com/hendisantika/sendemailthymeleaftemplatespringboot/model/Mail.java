@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,8 +27,10 @@ public class Mail {
     private String email;
 
     @NotNull
-    private String object;
+    private String subject;
 
     @NotNull
     private String message;
+
+    private LocalDateTime createdOn;
 }
